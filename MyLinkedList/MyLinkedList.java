@@ -54,7 +54,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         }
 
         MyNode<T> iteratorNode = null;
-        if (index <= sz / 2) {
+        if (index < sz / 2) {
             iteratorNode = iterateFromFront(index);
         } else {
             iteratorNode = iterateFromRear(index);
@@ -119,7 +119,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         }
 
         MyNode<T> iteratorNode = null;
-        if (index <= sz / 2) {
+        if (index < sz / 2) {
             iteratorNode = iterateFromFront(index);
         } else {
             iteratorNode = iterateFromRear(index);
@@ -242,7 +242,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         }
 
         MyNode<T> iteratorNode = null;
-        if (index <= sz / 2) {
+        if (index < sz / 2) {
             iteratorNode = iterateFromFront(index);
         } else {
             iteratorNode = iterateFromRear(index);
@@ -313,7 +313,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         }
 
         MyNode<T> iteratorNode = null;
-        if (index <= sz / 2) {
+        if (index < sz / 2) {
             iteratorNode = iterateFromFront(index);
         } else {
             iteratorNode = iterateFromRear(index);
