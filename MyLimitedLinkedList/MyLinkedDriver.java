@@ -3,35 +3,36 @@
  */
 public class MyLinkedDriver {
     public static void main(String[] args) {
-        MyLimitedLinkedList<Integer> myFirstArr = 
+        MyLimitedLinkedList<Integer> myFirstList = 
             new MyLimitedLinkedList<Integer>();
-        myFirstArr.add(1);
-        myFirstArr.add(2);
-        System.out.println("My first array is size == " + myFirstArr.size());
-        for (int i = 0; i < myFirstArr.size(); ++i) {
-            System.out.println(myFirstArr.get(i));
+        myFirstList.add(1);
+        myFirstList.add(2);
+        System.out.println("My first list is size == " + myFirstList.size());
+        for (int i = 0; i < myFirstList.size(); ++i) {
+            System.out.println(myFirstList.get(i));
         }
 
-        MyLimitedLinkedList<String> mySecondArr = 
+        MyLimitedLinkedList<String> mySecondList = 
             new MyLimitedLinkedList<String>();
-        mySecondArr.add("Hello");
-        mySecondArr.add("World");
-        System.out.println("\nMy second array is size == " + mySecondArr.size());
-        for (int i = 0; i < mySecondArr.size(); ++i) {
-            System.out.println(mySecondArr.get(i));
+        mySecondList.add("Hello");
+        mySecondList.add("World");
+        System.out.println("\nMy second list is size == "
+            + mySecondList.size());
+        for (int i = 0; i < mySecondList.size(); ++i) {
+            System.out.println(mySecondList.get(i));
         }
 
-        MyLimitedLinkedList<Integer> myThirdArr = 
+        MyLimitedLinkedList<Integer> myThirdList = 
             new MyLimitedLinkedList<Integer>();
         for (int i = 0; i < 1000; ++i) {
-            myThirdArr.add(0, i);
+            myThirdList.add(0, i);
         }
-        System.out.println("\nMy third array is size == " + myThirdArr.size());
+        System.out.println("\nMy third list is size == " + myThirdList.size());
 
         for (int i = 0; i < 1000; ++i) {
-            myThirdArr.remove(0);
+            myThirdList.remove(0);
         }
-        System.out.println("\nNow, my third array is size == "
-            + myThirdArr.size());
+        System.out.println("\nNow, my third list is size == "
+            + myThirdList.size());
     }
 }
