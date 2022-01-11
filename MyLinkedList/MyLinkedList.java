@@ -21,6 +21,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         dummyTail.prev = dummyHead;
     }
 
+    // Comes from both interfaces
     public boolean add(T element) {
         if (first) {
             dataType = element.getClass();
@@ -189,6 +190,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         return -1;
     }
 
+    // Comes from MyQueue interface
     public boolean offer(T element) {
         if (first) {
             dataType = element.getClass();
@@ -201,6 +203,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         return add(element); // No capacity in our implementation
     }
 
+    // Comes from MyQueue interface
     public T peek() {
         if (sz == 0) {
             return null;
@@ -209,6 +212,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         return dummyHead.next.val;
     }
 
+    // Comes from MyQueue interface
     public T poll() {
         if (sz == 0) {
             return null;
@@ -220,6 +224,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         return ret;
     }
 
+    // Comes from MyQueue interface
     public T remove() {
         if (sz == 0) {
             throw new NoSuchElementException();
