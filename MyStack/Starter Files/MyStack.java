@@ -10,7 +10,8 @@
      }
 
      public boolean empty() {
-         return isEmpty();
+         // ...
+         return true;
      }
 
      public T peek() {
@@ -18,7 +19,7 @@
              throw new EmptyStackException();
          }
 
-         return get(size() - 1);
+         return null;
      }
 
      public T pop() {
@@ -26,23 +27,21 @@
              throw new EmptyStackException();
          }
 
-         return remove(size() - 1);
+         return null;
      }
 
      public T push(T element) {
-         add(element);
-         return element;
+         // ...
+         return null;
      }
 
      public int search(T element) {
-         int index = lastIndexOf(element);
-         return index != -1
-             ? size() - index
-             : -1;
+         // ...
+         return -1;
      }
  }
 
- /**
+/**
  * Usage in main():
  * MyStack<Integer> myFirstStk = new MyStack<Integer>(Integer[].class);
  * myFirstStk.add(5);

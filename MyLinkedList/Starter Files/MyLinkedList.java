@@ -172,7 +172,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         T ret = null;
         // ...
 
-        return ret;
+        return null;
     }
 
     // Comes from MyQueue interface
@@ -184,7 +184,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         T ret = null;
         // ...
 
-        return ret;
+        return null;
     }
 
     public T remove(int index) {
@@ -197,7 +197,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         T ret = null;
         // ...
 
-        return ret;
+        return null;
     }
 
     public boolean remove(T element) {
@@ -218,7 +218,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         T ret = null;
         // ...
 
-        return ret;
+        return null;
     }
 
     // Not from either interface
@@ -230,7 +230,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         T ret = null;
         // ...
 
-        return ret;
+        return null;
     }
 
     public T set(int index, T element) {
@@ -246,7 +246,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
         T ret = null;
         // ...
 
-        return ret;
+        return null;
     }
 
     public int size() {

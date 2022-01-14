@@ -80,7 +80,7 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
         MyNode<T> iteratorNode = null;
         // ...
 
-        return iteratorNode.val;
+        return null;
     }
 
     // Not from MyList interface
@@ -89,7 +89,8 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
             throw new NoSuchElementException();
         }
 
-        return dummyHead.next.val;
+        // ...
+        return null;
     }
 
     // Not from MyList interface
@@ -98,7 +99,8 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
             throw new NoSuchElementException();
         }
 
-        return dummyTail.prev.val;
+        // ...
+        return null;
     }
 
     public int indexOf(T element) {
@@ -152,7 +154,9 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
             throw new NoSuchElementException();
         }
 
+        T ret = null;
         // ...
+
         return ret;
     }
 
@@ -165,7 +169,7 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
         T ret = null;
         // ...
 
-        return ret;
+        return null;
     }
 
     public T set(int index, T element) {
@@ -181,7 +185,7 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
         T ret = null;
         // ...
 
-        return ret;
+        return null;
     }
 
     public int size() {
