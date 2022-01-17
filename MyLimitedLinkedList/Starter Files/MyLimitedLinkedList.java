@@ -136,7 +136,7 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
         T ret = null;
         // ...
 
-        return ret;
+        return null;
     }
 
     public boolean remove(T element) {
@@ -157,7 +157,7 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
         T ret = null;
         // ...
 
-        return ret;
+        return null;
     }
 
     // Not from MyList interface

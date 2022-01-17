@@ -77,7 +77,7 @@ public class MyArrayList<T> implements MyList<T> {
         T ret = null;
         // ...
 
-        return ret;
+        return null;
     }
 
     public boolean remove(T element) {
@@ -93,7 +93,7 @@ public class MyArrayList<T> implements MyList<T> {
         T ret = null;
         // ...
 
-        return ret;
+        return null;
     }
 
     public int size() {
