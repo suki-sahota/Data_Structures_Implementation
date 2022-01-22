@@ -89,7 +89,9 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
             throw new NoSuchElementException();
         }
 
+        T ret = null;
         // ...
+
         return null;
     }
 
@@ -99,7 +101,9 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
             throw new NoSuchElementException();
         }
 
+        T ret = null;
         // ...
+
         return null;
     }
 
