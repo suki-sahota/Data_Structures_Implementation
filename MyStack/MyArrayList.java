@@ -101,7 +101,7 @@ public class MyArrayList<T> implements MyList<T> {
         shiftLeft(index + 1);
         --sz;
 
-        if (sz <= cap / 4) { halveArray(); }
+        if (sz <= (cap / 4) && sz >= (DEFAULT_SIZE * 2)) { halveArray(); }
 
         return ret;
     }
