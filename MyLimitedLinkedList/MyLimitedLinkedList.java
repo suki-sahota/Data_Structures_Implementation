@@ -299,13 +299,13 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
 
 /**
  * Usage in main():
- * MyLimitedLinkedList<Integer> myFirstArr =
- *     new MyLimitedLinkedList<Integer>(Integer[].class);
- * myFirstArr.add(5);
+ * MyLimitedLinkedList<Integer> myFirstList =
+ *     new MyLimitedLinkedList<Integer>();
+ * myFirstList.add(5);
  * ...
  *
- * MyLimitedLinkedList<String> mySecondArr =
- *     new MyLimitedLinkedList<String>(String[].class);
- * mySecondArr.add("Hello World");
+ * MyLimitedLinkedList<String> mySecondList =
+ *     new MyLimitedLinkedList<String>();
+ * mySecondList.add("Hello World");
  * ...
  */

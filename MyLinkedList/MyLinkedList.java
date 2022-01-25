@@ -355,13 +355,13 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
 
 /**
  * Usage in main():
- * MyLinkedList<Integer> myFirstArr =
- *     new MyLinkedList<Integer>(Integer[].class);
- * myFirstArr.add(5);
+ * MyLinkedList<Integer> myFirstList =
+ *     new MyLinkedList<Integer>();
+ * myFirstList.add(5);
  * ...
  *
- * MyLinkedList<String> mySecondArr =
- *     new MyLinkedList<String>(String[].class);
- * mySecondArr.add("Hello World");
+ * MyLinkedList<String> mySecondList =
+ *     new MyLinkedList<String>();
+ * mySecondList.add("Hello World");
  * ...
  */
