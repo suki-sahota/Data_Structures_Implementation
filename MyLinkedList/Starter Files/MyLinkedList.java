@@ -28,7 +28,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
             first = false;
         }
         if (element.getClass() != dataType) {
-            throw new InputMismatchException("Type missmatch");
+            throw new InputMismatchException("Type mismatch");
         }
 
         // ...
@@ -44,7 +44,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
             first = false;
         }
         if (element.getClass() != dataType) {
-            throw new InputMismatchException("Type missmatch");
+            throw new InputMismatchException("Type mismatch");
         }
 
         // ...
@@ -66,7 +66,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
 
     public boolean contains(T element) {
         if (!first && element.getClass() != dataType) {
-            throw new InputMismatchException("Type missmatch");
+            throw new InputMismatchException("Type mismatch");
         }
 
         // ...
@@ -117,7 +117,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
 
     public int indexOf(T element) {
         if (!first && element.getClass() != dataType) {
-            throw new InputMismatchException("Type missmatch");
+            throw new InputMismatchException("Type mismatch");
         }
 
         // ...
@@ -131,7 +131,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
 
     public int lastIndexOf(T element) {
         if (!first && element.getClass() != dataType) {
-            throw new InputMismatchException("Type missmatch");
+            throw new InputMismatchException("Type mismatch");
         }
 
         // ...
@@ -202,7 +202,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
 
     public boolean remove(T element) {
         if (!first && element.getClass() != dataType) {
-            throw new InputMismatchException("Type missmatch");
+            throw new InputMismatchException("Type mismatch");
         }
 
         // ...
@@ -238,7 +238,7 @@ public class MyLinkedList<T> implements MyList<T>, MyQueue<T> {
             throw new IndexOutOfBoundsException();
         }
         if (element.getClass() != dataType) {
-            throw new InputMismatchException("Type missmatch");
+            throw new InputMismatchException("Type mismatch");
         }
 
         // ...

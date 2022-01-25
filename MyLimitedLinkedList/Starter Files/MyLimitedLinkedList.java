@@ -27,7 +27,7 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
             first = false;
         }
         if (element.getClass() != dataType) {
-            throw new InputMismatchException("Type missmatch");
+            throw new InputMismatchException("Type mismatch");
         }
 
         // ...
@@ -43,7 +43,7 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
             first = false;
         }
         if (element.getClass() != dataType) {
-            throw new InputMismatchException("Type missmatch");
+            throw new InputMismatchException("Type mismatch");
         }
 
         // ...
@@ -65,7 +65,7 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
 
     public boolean contains(T element) {
         if (!first && element.getClass() != dataType) {
-            throw new InputMismatchException("Type missmatch");
+            throw new InputMismatchException("Type mismatch");
         }
 
         // ...
@@ -109,7 +109,7 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
 
     public int indexOf(T element) {
         if (!first && element.getClass() != dataType) {
-            throw new InputMismatchException("Type missmatch");
+            throw new InputMismatchException("Type mismatch");
         }
 
         // ...
@@ -123,7 +123,7 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
 
     public int lastIndexOf(T element) {
         if (!first && element.getClass() != dataType) {
-            throw new InputMismatchException("Type missmatch");
+            throw new InputMismatchException("Type mismatch");
         }
 
         // ...
@@ -145,7 +145,7 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
 
     public boolean remove(T element) {
         if (!first && element.getClass() != dataType) {
-            throw new InputMismatchException("Type missmatch");
+            throw new InputMismatchException("Type mismatch");
         }
 
         // ...
@@ -181,7 +181,7 @@ public class MyLimitedLinkedList<T> implements MyList<T> {
             throw new IndexOutOfBoundsException();
         }
         if (element.getClass() != dataType) {
-            throw new InputMismatchException("Type missmatch");
+            throw new InputMismatchException("Type mismatch");
         }
 
         // ...
