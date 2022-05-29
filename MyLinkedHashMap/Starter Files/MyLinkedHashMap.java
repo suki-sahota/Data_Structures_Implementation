@@ -4,7 +4,7 @@
  import java.lang.reflect.Array;
 
 public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
-    private final static int DEFAULT_SIZE = 64;
+    private final static int DEFAULT_SIZE = 8;
 
     private MyNode<K, V>[] hashTable;
     private int sz;
@@ -30,7 +30,11 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
             // Find node at this entry
             MyNode<K, V> curNode = hashTable[i];
 
-            // ...
+            // While loop through each node at this entry
+            while (curNode != null) {
+                // ...
+                curNode = curNode.next;
+            }
         }
         return false;
     }
@@ -40,7 +44,11 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
             // Find node at this entry
             MyNode<K, V> curNode = hashTable[i];
 
-            // ...
+            // While loop through each node at this entry
+            while (curNode != null) {
+                // ...
+                curNode = curNode.next;
+            }
         }
         return false;
     }
@@ -50,8 +58,10 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
         int index = Math.abs(hashCode % cap);
 
         MyNode<K, V> curNode = hashTable[index];
-        // ...
-
+        while (curNode != null) {
+            // ...
+            curNode = curNode.next;
+        }
         return null;
     }
 
@@ -60,8 +70,10 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
         int index = Math.abs(hashCode % cap);
 
         MyNode<K, V> curNode = hashTable[index];
-        // ...
-
+        while (curNode != null) {
+            // ...
+            curNode = curNode.next;
+        }
         return defaultValue;
     }
 
@@ -77,7 +89,14 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
         int index = Math.abs(hashCode % cap);
 
         MyNode<K, V> curNode = hashTable[index];
-        // ...
+        while (curNode != null) {
+            if (key == null ? curNode.key == null : key.equals(curNode.key)) {
+                ret = curNode.val;
+                // ...
+                break;
+            }
+            curNode = curNode.next;
+        }
 
         if (!found) {
             // Create a new node and place it before curNode
@@ -85,6 +104,8 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
             if (hashTable[index] != null) { hashTable[index].prev = newNode; }
             hashTable[index] = newNode;
             ++sz;
+
+            if (sz == cap) { doubleHashTable(); }
         }
 
         return ret;
@@ -115,14 +136,59 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
                 curNode.next = null;
 
                 --sz;
+
+                if ((sz <= cap / 4) && (cap >= DEFAULT_SIZE * 2)) {
+                    halveHashTable();
+                }
+
                 break;
             }
+            curNode = curNode.next;
         }
 
         return ret;
     }
 
     public int size() {
-        return sz;
+        // ...
+    }
+
+    // Helper functions
+    private void doubleHashTable() {
+        resizeHashTable(cap, cap * 2);
+    }
+
+    private void halveHashTable() {
+        resizeHashTable(cap, cap / 2);
+    }
+
+    private void resizeHashTable(int oldCap, int newCap) {
+        MyNode<K, V>[] myNewHashTable = new MyNode[newCap];
+
+        for (int i = 0; i < oldCap; ++i) {
+            MyNode<K, V> curNode = hashTable[i];
+
+            while (curNode != null) {
+                // Rehash to index in resized hashtable
+                int hashCode = curNode.key == null 
+                    ? 0 
+                    : curNode.key.hashCode();
+                int newIndex = Math.abs(hashCode % newCap); // cap is resized
+
+                // Save next node in temporary node
+                MyNode<K, V> tempNode = curNode.next;
+
+                curNode.next = myNewHashTable[newIndex];
+                if (myNewHashTable[newIndex] != null) {
+                    myNewHashTable[newIndex].prev = curNode;
+                }
+                myNewHashTable[newIndex] = curNode;
+
+                curNode = tempNode;
+            }
+        }
+
+        hashTable = myNewHashTable;
+        cap = newCap;
     }
 }

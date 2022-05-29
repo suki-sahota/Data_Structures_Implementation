@@ -4,7 +4,7 @@
  import java.lang.reflect.Array;
 
 public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
-    private final static int DEFAULT_SIZE = 4;
+    private final static int DEFAULT_SIZE = 8;
 
     private MyNode<K, V>[] hashTable;
     private int sz;
@@ -191,15 +191,16 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
                     : curNode.key.hashCode();
                 int newIndex = Math.abs(hashCode % newCap); // cap is resized
 
-                MyNode<K, V> newNode = new MyNode(
-                    curNode.key, curNode.val, myNewHashTable[newIndex]
-                );
-                if (myNewHashTable[newIndex] != null) {
-                    myNewHashTable[newIndex].prev = newNode;
-                }
-                myNewHashTable[newIndex] = newNode;
+                // Save next node in temporary node
+                MyNode<K, V> tempNode = curNode.next;
 
-                curNode = curNode.next;
+                curNode.next = myNewHashTable[newIndex];
+                if (myNewHashTable[newIndex] != null) {
+                    myNewHashTable[newIndex].prev = curNode;
+                }
+                myNewHashTable[newIndex] = curNode;
+
+                curNode = tempNode;
             }
         }
 
