@@ -4,7 +4,7 @@
  import java.lang.reflect.Array;
 
 public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
-    private final static int DEFAULT_SIZE = 64;
+    private final static int DEFAULT_SIZE = 4;
 
     private MyNode<K, V>[] hashTable;
     private int sz;
@@ -120,6 +120,8 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
             if (hashTable[index] != null) { hashTable[index].prev = newNode; }
             hashTable[index] = newNode;
             ++sz;
+
+            if (sz == cap) { doubleHashTable(); }
         }
 
         return ret;
@@ -150,8 +152,14 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
                 curNode.next = null;
 
                 --sz;
+
+                if ((sz <= cap / 4) && (cap >= DEFAULT_SIZE * 2)) {
+                    halveHashTable();
+                }
+
                 break;
             }
+            curNode = curNode.next;
         }
 
         return ret;
@@ -159,5 +167,43 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
 
     public int size() {
         return sz;
+    }
+
+    // Helper functions
+    private void doubleHashTable() {
+        resizeHashTable(cap, cap * 2);
+    }
+
+    private void halveHashTable() {
+        resizeHashTable(cap, cap / 2);
+    }
+
+    private void resizeHashTable(int oldCap, int newCap) {
+        MyNode<K, V>[] myNewHashTable = new MyNode[newCap];
+
+        for (int i = 0; i < oldCap; ++i) {
+            MyNode<K, V> curNode = hashTable[i];
+
+            while (curNode != null) {
+                // Rehash to index in resized hashtable
+                int hashCode = curNode.key == null 
+                    ? 0 
+                    : curNode.key.hashCode();
+                int newIndex = Math.abs(hashCode % newCap); // cap is resized
+
+                MyNode<K, V> newNode = new MyNode(
+                    curNode.key, curNode.val, myNewHashTable[newIndex]
+                );
+                if (myNewHashTable[newIndex] != null) {
+                    myNewHashTable[newIndex].prev = newNode;
+                }
+                myNewHashTable[newIndex] = newNode;
+
+                curNode = curNode.next;
+            }
+        }
+
+        hashTable = myNewHashTable;
+        cap = newCap;
     }
 }
