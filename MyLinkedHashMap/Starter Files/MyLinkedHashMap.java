@@ -1,8 +1,6 @@
 /**
  * Author: Suki Sahota
  */
- import java.lang.reflect.Array;
-
 public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
     private final static int DEFAULT_SIZE = 8;
 
