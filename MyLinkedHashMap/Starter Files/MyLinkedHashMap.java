@@ -22,8 +22,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
 
     public void clear() {
         hashTable = new MyNode[DEFAULT_SIZE];
-        sz = 0;
-        cap = DEFAULT_SIZE;
+        // ...
     }
 
     public boolean containsKey(K key) {
@@ -31,16 +30,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
             // Find node at this entry
             MyNode<K, V> curNode = hashTable[i];
 
-            // While loop through each node at this entry
-            while (curNode != null) {
-                if (key == null
-                    ? curNode.key == null
-                    : key.equals(curNode.key))
-                {
-                    return true;
-                }
-                curNode = curNode.next;
-            }
+            // ...
         }
         return false;
     }
@@ -50,16 +40,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
             // Find node at this entry
             MyNode<K, V> curNode = hashTable[i];
 
-            // While loop through each node at this entry
-            while (curNode != null) {
-                if (val == null
-                    ? curNode.val == null
-                    : val.equals(curNode.val))
-                {
-                    return true;
-                }
-                curNode = curNode.next;
-            }
+            // ...
         }
         return false;
     }
@@ -69,12 +50,8 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
         int index = Math.abs(hashCode % cap);
 
         MyNode<K, V> curNode = hashTable[index];
-        while (curNode != null) {
-            if (key == null ? curNode.key == null : key.equals(curNode.key)) {
-                return curNode.val;
-            }
-            curNode = curNode.next;
-        }
+        // ...
+
         return null;
     }
 
@@ -83,17 +60,13 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
         int index = Math.abs(hashCode % cap);
 
         MyNode<K, V> curNode = hashTable[index];
-        while (curNode != null) {
-            if (key == null ? curNode.key == null : key.equals(curNode.key)) {
-                return curNode.val;
-            }
-            curNode = curNode.next;
-        }
+        // ...
+
         return defaultValue;
     }
 
     public boolean isEmpty() {
-        return sz == 0 ? true : false;
+        // ...
     }
 
     public V put (K key, V val) {
@@ -104,15 +77,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
         int index = Math.abs(hashCode % cap);
 
         MyNode<K, V> curNode = hashTable[index];
-        while (curNode != null) {
-            if (key == null ? curNode.key == null : key.equals(curNode.key)) {
-                ret = curNode.val;
-                curNode.val = val;
-                found = true;
-                break;
-            }
-            curNode = curNode.next;
-        }
+        // ...
 
         if (!found) {
             // Create a new node and place it before curNode
