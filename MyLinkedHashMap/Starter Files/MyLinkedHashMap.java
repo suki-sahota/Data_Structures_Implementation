@@ -84,9 +84,9 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
             MyNode<K, V> newNode = new MyNode(key, val, hashTable[index]);
             if (hashTable[index] != null) { hashTable[index].prev = newNode; }
             hashTable[index] = newNode;
+            ++sz;
         }
 
-        ++sz;
         return ret;
     }
 
