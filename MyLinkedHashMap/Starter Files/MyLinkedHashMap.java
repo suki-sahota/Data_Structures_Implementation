@@ -1,17 +1,24 @@
 /**
  * Author: Suki Sahota
  */
+import java.util.InputMismatchException;
+
 public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
     private final static int DEFAULT_SIZE = 8;
 
     private MyNode<K, V>[] hashTable;
     private int sz;
     private int cap;
+    private boolean first;
+    private Class keyType;
+    private Class valType;
 
     public MyLinkedHashMap(int length) {
         hashTable = (MyNode<K, V>[]) new MyNode[length];
         sz = 0;
         cap = length;
+
+        first = true;
     }
 
     public MyLinkedHashMap() {
@@ -24,13 +31,22 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
     }
 
     public boolean containsKey(K key) {
+        if (key.getClass() != keyType) {
+            throw new InputMismatchException("Type mismatch");
+        }
+
         for (int i = 0; i < cap; ++i) {
             // Find node at this entry
             MyNode<K, V> curNode = hashTable[i];
 
             // While loop through each node at this entry
             while (curNode != null) {
-                // ...
+                if (key == null
+                    ? curNode.key == null
+                    : key.equals(curNode.key))
+                {
+                    // ...
+                }
                 curNode = curNode.next;
             }
         }
@@ -38,13 +54,22 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
     }
 
     public boolean containsValue(V val) {
+        if (val.getClass() != valType) {
+            throw new InputMismatchException("Type mismatch");
+        }
+
         for (int i = 0; i < cap; ++i) {
             // Find node at this entry
             MyNode<K, V> curNode = hashTable[i];
 
             // While loop through each node at this entry
             while (curNode != null) {
-                // ...
+                if (val == null
+                    ? curNode.val == null
+                    : val.equals(curNode.val))
+                {
+                    // ...
+                }
                 curNode = curNode.next;
             }
         }
@@ -52,34 +77,61 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
     }
 
     public V get(K key) {
+        if (key.getClass() != keyType) {
+            throw new InputMismatchException("Type mismatch");
+        }
+
+        V ret = null;
+
         int hashCode = key == null ? 0 : key.hashCode();
         int index = Math.abs(hashCode % cap);
 
         MyNode<K, V> curNode = hashTable[index];
         while (curNode != null) {
-            // ...
+            if (key == null ? curNode.key == null : key.equals(curNode.key)) {
+                // ...
+                break;
+            }
             curNode = curNode.next;
         }
-        return null;
+        return ret;
     }
 
     public V getOrDefault(K key, V defaultValue) {
+        if (key.getClass() != keyType || defaultValue.getClass() != valType) {
+            throw new InputMismatchException("Type mismatch");
+        }
+
+        V ret = defaultValue;
+
         int hashCode = key == null ? 0 : key.hashCode();
         int index = Math.abs(hashCode % cap);
 
         MyNode<K, V> curNode = hashTable[index];
         while (curNode != null) {
-            // ...
+            if (key == null ? curNode.key == null : key.equals(curNode.key)) {
+                // ...
+                break;
+            }
             curNode = curNode.next;
         }
-        return defaultValue;
+        return ret;
     }
 
     public boolean isEmpty() {
         // ...
     }
 
-    public V put (K key, V val) {
+    public V put(K key, V val) {
+        if (first) {
+            keyType = key.getClass();
+            valType = val.getClass();
+            first = false;
+        }
+        if (key.getClass() != keyType || val.getClass() != valType) {
+            throw new InputMismatchException("Type mismatch");
+        }
+
         V ret = null;
         boolean found = false;
 
@@ -89,7 +141,6 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
         MyNode<K, V> curNode = hashTable[index];
         while (curNode != null) {
             if (key == null ? curNode.key == null : key.equals(curNode.key)) {
-                ret = curNode.val;
                 // ...
                 break;
             }
@@ -110,6 +161,10 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
     }
 
     public V remove(K key) {
+        if (key.getClass() != keyType) {
+            throw new InputMismatchException("Type mismatch");
+        }
+
         V ret = null;
 
         int hashCode = key == null ? 0 : key.hashCode();
