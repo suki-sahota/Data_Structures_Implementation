@@ -15,7 +15,7 @@
      }
 
      public T peek() {
-         if (isEmpty()) {
+         if (super.isEmpty()) {
              throw new EmptyStackException();
          }
 
@@ -23,7 +23,7 @@
      }
 
      public T pop() {
-         if (isEmpty()) {
+         if (super.isEmpty()) {
              throw new EmptyStackException();
          }
 

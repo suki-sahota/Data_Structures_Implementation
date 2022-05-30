@@ -10,34 +10,34 @@
      }
 
      public boolean empty() {
-         return isEmpty();
+         return super.isEmpty();
      }
 
      public T peek() {
-         if (isEmpty()) {
+         if (super.isEmpty()) {
              throw new EmptyStackException();
          }
 
-         return get(size() - 1);
+         return super.get(super.size() - 1);
      }
 
      public T pop() {
-         if (isEmpty()) {
+         if (super.isEmpty()) {
              throw new EmptyStackException();
          }
 
-         return remove(size() - 1);
+         return super.remove(super.size() - 1);
      }
 
      public T push(T element) {
-         add(element);
+         super.add(element);
          return element;
      }
 
      public int search(T element) {
-         int index = lastIndexOf(element);
+         int index = super.lastIndexOf(element);
          return index != -1
-             ? size() - index
+             ? super.size() - index
              : -1;
      }
  }
