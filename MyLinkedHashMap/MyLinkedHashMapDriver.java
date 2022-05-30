@@ -5,6 +5,12 @@ public class MyLinkedHashMapDriver {
     public static void main(String[] args) {
         MyLinkedHashMap<String, Integer> myFirstMap =
             new MyLinkedHashMap<String, Integer>();
+
+        System.out.println("Checking if \"First\" is contained in map");
+        System.out.println("Answer is " + myFirstMap.containsKey("First"));
+        System.out.println();
+
+        System.out.println("Adding First through Fifth in map");
         myFirstMap.put("First", 1);
         myFirstMap.put("Second", 2);
         myFirstMap.put("Third", 3);

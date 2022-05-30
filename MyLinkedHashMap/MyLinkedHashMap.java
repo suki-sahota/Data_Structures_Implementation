@@ -32,7 +32,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
     }
 
     public boolean containsKey(K key) {
-        if (key.getClass() != keyType) {
+        if (!first && key.getClass() != keyType) {
             throw new InputMismatchException("Type mismatch");
         }
 
@@ -55,7 +55,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
     }
 
     public boolean containsValue(V val) {
-        if (val.getClass() != valType) {
+        if (!first && val.getClass() != valType) {
             throw new InputMismatchException("Type mismatch");
         }
 
@@ -78,7 +78,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
     }
 
     public V get(K key) {
-        if (key.getClass() != keyType) {
+        if (!first && key.getClass() != keyType) {
             throw new InputMismatchException("Type mismatch");
         }
 
@@ -99,7 +99,9 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
     }
 
     public V getOrDefault(K key, V defaultValue) {
-        if (key.getClass() != keyType || defaultValue.getClass() != valType) {
+        if (!first &&
+            (key.getClass() != keyType || defaultValue.getClass() != valType))
+        {
             throw new InputMismatchException("Type mismatch");
         }
 
@@ -164,7 +166,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
     }
 
     public V remove(K key) {
-        if (key.getClass() != keyType) {
+        if (!first && key.getClass() != keyType) {
             throw new InputMismatchException("Type mismatch");
         }
 
