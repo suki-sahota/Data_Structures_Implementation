@@ -6,7 +6,7 @@ import java.util.InputMismatchException;
 public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
     private final static int DEFAULT_SIZE = 8;
 
-    private MyNode<K, V>[] hashTable;
+    private MyHashNode<K, V>[] hashTable;
     private int sz;
     private int cap;
     private boolean first;
@@ -14,7 +14,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
     private Class valType;
 
     public MyLinkedHashMap(int length) {
-        hashTable = (MyNode<K, V>[]) new MyNode[length];
+        hashTable = (MyHashNode<K, V>[]) new MyHashNode[length];
         sz = 0;
         cap = length;
 
@@ -26,7 +26,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
     }
 
     public void clear() {
-        hashTable = new MyNode[DEFAULT_SIZE];
+        hashTable = new MyHashNode[DEFAULT_SIZE];
         // ...
     }
 
@@ -37,7 +37,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
 
         for (int i = 0; i < cap; ++i) {
             // Find node at this entry
-            MyNode<K, V> curNode = hashTable[i];
+            MyHashNode<K, V> curNode = hashTable[i];
 
             // While loop through each node at this entry
             while (curNode != null) {
@@ -60,7 +60,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
 
         for (int i = 0; i < cap; ++i) {
             // Find node at this entry
-            MyNode<K, V> curNode = hashTable[i];
+            MyHashNode<K, V> curNode = hashTable[i];
 
             // While loop through each node at this entry
             while (curNode != null) {
@@ -86,7 +86,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
         int hashCode = key == null ? 0 : key.hashCode();
         int index = Math.abs(hashCode % cap);
 
-        MyNode<K, V> curNode = hashTable[index];
+        MyHashNode<K, V> curNode = hashTable[index];
         while (curNode != null) {
             if (key == null ? curNode.key == null : key.equals(curNode.key)) {
                 // ...
@@ -109,7 +109,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
         int hashCode = key == null ? 0 : key.hashCode();
         int index = Math.abs(hashCode % cap);
 
-        MyNode<K, V> curNode = hashTable[index];
+        MyHashNode<K, V> curNode = hashTable[index];
         while (curNode != null) {
             if (key == null ? curNode.key == null : key.equals(curNode.key)) {
                 // ...
@@ -140,7 +140,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
         int hashCode = key == null ? 0 : key.hashCode();
         int index = Math.abs(hashCode % cap);
 
-        MyNode<K, V> curNode = hashTable[index];
+        MyHashNode<K, V> curNode = hashTable[index];
         while (curNode != null) {
             if (key == null ? curNode.key == null : key.equals(curNode.key)) {
                 // ...
@@ -151,7 +151,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
 
         if (!found) {
             // Create a new node and place it before curNode
-            MyNode<K, V> newNode = new MyNode(key, val, hashTable[index]);
+            MyHashNode<K, V> newNode = new MyHashNode(key, val, hashTable[index]);
             if (hashTable[index] != null) { hashTable[index].prev = newNode; }
             hashTable[index] = newNode;
             ++sz;
@@ -172,7 +172,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
         int hashCode = key == null ? 0 : key.hashCode();
         int index = Math.abs(hashCode % cap);
 
-        MyNode<K, V> curNode = hashTable[index];
+        MyHashNode<K, V> curNode = hashTable[index];
         while (curNode != null) {
             if (key == null ? curNode.key == null : key.equals(curNode.key)) {
                 ret = curNode.val;
@@ -218,10 +218,10 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
     }
 
     private void resizeHashTable(int oldCap, int newCap) {
-        MyNode<K, V>[] myNewHashTable = new MyNode[newCap];
+        MyHashNode<K, V>[] myNewHashTable = new MyHashNode[newCap];
 
         for (int i = 0; i < oldCap; ++i) {
-            MyNode<K, V> curNode = hashTable[i];
+            MyHashNode<K, V> curNode = hashTable[i];
 
             while (curNode != null) {
                 // Rehash to index in resized hashtable
@@ -231,7 +231,7 @@ public class MyLinkedHashMap<K, V> implements MyMap<K, V> {
                 int newIndex = Math.abs(hashCode % newCap); // cap is resized
 
                 // Save next node in temporary node
-                MyNode<K, V> tempNode = curNode.next;
+                MyHashNode<K, V> tempNode = curNode.next;
 
                 curNode.next = myNewHashTable[newIndex];
                 if (myNewHashTable[newIndex] != null) {

@@ -1,14 +1,14 @@
 /**
  * Author: Suki Sahota
  */
-public class MyNode<K, V> {
+public class MyHashNode<K, V> {
     public K key;
     public V val;
-    public MyNode<K, V> next;
-    public MyNode<K, V> prev;
+    public MyHashNode<K, V> next;
+    public MyHashNode<K, V> prev;
 
     // No-argument constructor
-    public MyNode() {
+    public MyHashNode() {
         this.key = null;
         this.val = null;
         next = null;
@@ -16,7 +16,7 @@ public class MyNode<K, V> {
     }
 
     // Two-argument constructor
-    public MyNode(K key, V val) {
+    public MyHashNode(K key, V val) {
         this.key = key;
         this.val = val;
         next = null;
@@ -24,7 +24,7 @@ public class MyNode<K, V> {
     }
 
     // Three-argument constructor
-    public MyNode(K key, V val, MyNode<K, V> next) {
+    public MyHashNode(K key, V val, MyHashNode<K, V> next) {
         this.key = key;
         this.val = val;
         this.next = next;
@@ -32,7 +32,9 @@ public class MyNode<K, V> {
     }
 
     // Four-argument constructor
-    public MyNode(K key, V val, MyNode<K, V> next, MyNode<K, V> prev) {
+    public MyHashNode(K key, V val, MyHashNode<K, V> next,
+        MyHashNode<K, V> prev)
+    {
         this.key = key;
         this.val = val;
         this.next = next;
